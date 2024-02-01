@@ -14,9 +14,11 @@ public class NoiseVisualization : AbstractVisualization {
 
 		Perlin,
 		PerlinTurbulence,
-		
+
 		SimplexValue,
 		SimplexTurbulenceValue,
+		Simplex,
+		SimplexTurbulence,
 
 		VoronoiWorleyF1,
 		VoronoiWorleyF2,
@@ -73,7 +75,7 @@ public class NoiseVisualization : AbstractVisualization {
 			NoiseJob<Lattice3D<LatticeTilling, Turbulence<Perlin>>>.ScheduleParallel,
 		},
 
-		/* Simplex value noise - duplicated entries for simplicity here */
+		/* Simplex noise - duplicated entries for simplicity here */
 		{
 			NoiseJob<Simplex1D<Value>>.ScheduleParallel,
 			NoiseJob<Simplex1D<Value>>.ScheduleParallel,
@@ -89,6 +91,22 @@ public class NoiseVisualization : AbstractVisualization {
 			NoiseJob<Simplex2D<Turbulence<Value>>>.ScheduleParallel,
 			NoiseJob<Simplex3D<Turbulence<Value>>>.ScheduleParallel,
 			NoiseJob<Simplex3D<Turbulence<Value>>>.ScheduleParallel,
+		},
+		{
+			NoiseJob<Simplex1D<Simplex>>.ScheduleParallel,
+			NoiseJob<Simplex1D<Simplex>>.ScheduleParallel,
+			NoiseJob<Simplex2D<Simplex>>.ScheduleParallel,
+			NoiseJob<Simplex2D<Simplex>>.ScheduleParallel,
+			NoiseJob<Simplex3D<Simplex>>.ScheduleParallel,
+			NoiseJob<Simplex3D<Simplex>>.ScheduleParallel,
+		},
+		{
+			NoiseJob<Simplex1D<Turbulence<Simplex>>>.ScheduleParallel,
+			NoiseJob<Simplex1D<Turbulence<Simplex>>>.ScheduleParallel,
+			NoiseJob<Simplex2D<Turbulence<Simplex>>>.ScheduleParallel,
+			NoiseJob<Simplex2D<Turbulence<Simplex>>>.ScheduleParallel,
+			NoiseJob<Simplex3D<Turbulence<Simplex>>>.ScheduleParallel,
+			NoiseJob<Simplex3D<Turbulence<Simplex>>>.ScheduleParallel,
 		},
 
 		/* Voronoi-Worley Noise (Euclidean distance) */

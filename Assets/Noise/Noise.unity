@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1934041422262105306, guid: da34bb6143783344fa76955fbe3ba45c, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934041422262105306, guid: da34bb6143783344fa76955fbe3ba45c, type: 3}
+      propertyPath: instanceScale
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3674665296211742883, guid: da34bb6143783344fa76955fbe3ba45c, type: 3}
       propertyPath: m_Name
       value: NoiseVisualizer
