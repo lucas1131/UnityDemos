@@ -72,7 +72,7 @@ public static partial class Noise {
 
 			LatticeSpan4 x = lattice.GetLatticeSpan4(points.c0, frequency);
 			float4 noise1d = lerp(gradient.Evaluate(hash.Eat(x.p0), x.g0), gradient.Evaluate(hash.Eat(x.p1), x.g1), x.t);
-			return gradient.EvaluateAfterInterpolation(noise1d);
+			return gradient.EvaluateCombined(noise1d);
 		}
 	}
 
@@ -100,7 +100,7 @@ public static partial class Noise {
 				z.t);
 
 			float4 noise2d = lerp(noise1d0, noise1d1, x.t);
-			return gradient.EvaluateAfterInterpolation(noise2d);
+			return gradient.EvaluateCombined(noise2d);
 		}
 	}
 
@@ -148,7 +148,7 @@ public static partial class Noise {
 			);
 
 			float4 noise3d = lerp(noise2d0, noise2d1, x.t);
-			return gradient.EvaluateAfterInterpolation(noise3d);
+			return gradient.EvaluateCombined(noise3d);
 		}
 	}
 }}

@@ -91,8 +91,6 @@ public class NoiseVisualization : AbstractVisualization {
 			NoiseJob<Simplex3D<Turbulence<Value>>>.ScheduleParallel,
 		},
 
-		
-
 		/* Voronoi-Worley Noise (Euclidean distance) */
 		{
 			NoiseJob<Voronoi1D<LatticeNormal,  Worley, F1>>.ScheduleParallel,

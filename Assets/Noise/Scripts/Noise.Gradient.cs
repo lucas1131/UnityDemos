@@ -10,14 +10,14 @@ public static partial class Noise {
 		float4 Evaluate(SmallXXHash4 hash, float4 x);
 		float4 Evaluate(SmallXXHash4 hash, float4 x, float4 y);
 		float4 Evaluate(SmallXXHash4 hash, float4 x, float4 y, float4 z);
-		float4 EvaluateAfterInterpolation(float4 value);
+		float4 EvaluateCombined(float4 value);
 	}
 
 	public struct Value : IGradient {
 		public float4 Evaluate(SmallXXHash4 hash, float4 x) => hash.Float01A()*2f - 1f;
 		public float4 Evaluate(SmallXXHash4 hash, float4 x, float4 y) => hash.Float01A()*2f - 1f;
 		public float4 Evaluate(SmallXXHash4 hash, float4 x, float4 y, float4 z) => hash.Float01A()*2f - 1f;
-		public float4 EvaluateAfterInterpolation(float4 value) => value;
+		public float4 EvaluateCombined(float4 value) => value;
 	}
 
 	public struct Perlin : IGradient {
@@ -45,13 +45,13 @@ public static partial class Noise {
 			return (x*gx + y*gy) * (2f / 0.56290f); // Octahedron gradients maximum
 		}
 	
-		public float4 EvaluateAfterInterpolation(float4 value) => value;
+		public float4 EvaluateCombined(float4 value) => value;
 	}
 
 	public struct Turbulence<G> : IGradient where G : struct, IGradient {
 		public float4 Evaluate (SmallXXHash4 hash, float4 x) => default(G).Evaluate(hash, x);
 		public float4 Evaluate (SmallXXHash4 hash, float4 x, float4 y) => default(G).Evaluate(hash, x, y);
 		public float4 Evaluate (SmallXXHash4 hash, float4 x, float4 y, float4 z) => default(G).Evaluate(hash, x, y, z);
-		public float4 EvaluateAfterInterpolation (float4 value) => abs(default(G).EvaluateAfterInterpolation(value));
+		public float4 EvaluateCombined (float4 value) => abs(default(G).EvaluateCombined(value));
 	}
 }}

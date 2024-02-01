@@ -21,8 +21,8 @@ void procedural_instancing () {
 float3 GetColor(){
 	#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
 	 float noise = _Noise[unity_InstanceID];
-	 // return noise < 0.0 ? float3(-noise, 0.0, 0.0) : noise;
-	 return float3(noise, noise/2.0, noise/3.0);
+	 return noise < 0.0 ? float3(-noise, 0.0, 0.0) : noise;
+	 // return float3(noise, noise/2.0, noise/3.0);
 	#else
 	 return 1.0;
 	#endif
