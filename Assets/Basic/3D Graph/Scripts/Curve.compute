@@ -1,0 +1,174 @@
+// kernels transitions are defined as curveTo + curveFrom*5
+#pragma kernel WaveKernel              // Curve
+#pragma kernel WaveToMultiWaveKernel   // Morph
+#pragma kernel WaveToRippleKernel      // Morph
+#pragma kernel WaveToSphereKernel      // Morph
+#pragma kernel WaveToTorusKernel       // Morph
+
+#pragma kernel MultiWaveToWaveKernel   // Morph
+#pragma kernel MultiWaveKernel         // Curve
+#pragma kernel MultiWaveToRippleKernel // Morph
+#pragma kernel MultiWaveToSphereKernel // Morph
+#pragma kernel MultiWaveToTorusKernel  // Morph
+
+#pragma kernel RippleToWaveKernel      // Morph
+#pragma kernel RippleToMultiWaveKernel // Morph
+#pragma kernel RippleKernel            // Curve
+#pragma kernel RippleToSphereKernel    // Morph
+#pragma kernel RippleToTorusKernel     // Morph
+
+#pragma kernel SphereToWaveKernel      // Morph
+#pragma kernel SphereToMultiWaveKernel // Morph
+#pragma kernel SphereToRippleKernel    // Morph
+#pragma kernel SphereKernel            // Curve
+#pragma kernel SphereToTorusKernel     // Morph
+
+#pragma kernel TorusToWaveKernel       // Morph
+#pragma kernel TorusToMultiWaveKernel  // Morph
+#pragma kernel TorusToRippleKernel     // Morph
+#pragma kernel TorusToSphereKernel     // Morph
+#pragma kernel TorusKernel             // Curve
+
+
+#define PI 3.14159265358979323846
+
+RWStructuredBuffer<float3> _Positions;
+float _Step;
+float _Time;
+float _Progress;
+uint _Resolution; 
+
+float _G_frequency = 1.0;
+float _G_amplitude = 1.0;
+float _G_radius = 1.0;
+float _G_inner_radius = 0.0;
+float _G_anim_scale = 1.0;
+float _G_v_ripple_frequency = 1.0;
+float _G_h_ripple_frequency = 1.0;
+float _G_v_ripple_frequency2 = 1.0;
+float _G_h_ripple_frequency2 = 1.0;
+
+float2 GetUV(uint3 id) {
+	return (id.xy + 0.5) * _Step - 1.0;
+}
+
+void SetPosition (uint3 id, float3 position) {
+	if (id.x < _Resolution && id.y < _Resolution) {
+		_Positions[id.x + id.y * _Resolution] = position;
+	}
+}
+
+float3 Wave(float u, float v, float t){
+	t *= _G_anim_scale;
+
+	float3 p;
+	p.x = u;
+	p.y = sin(PI * ((u+v + t)*_G_frequency)) * _G_amplitude;
+	p.z = v;
+	return p;
+}
+
+float3 MultiWave(float u, float v, float t){
+	t *= _G_anim_scale;
+
+	float3 p;
+	p.x = u;
+	p.y =        _G_amplitude * sin(PI * ((u + 0.5 + t)*_G_frequency));
+	p.y += 0.5 * _G_amplitude * sin(2 * PI * ((v+t)*_G_h_ripple_frequency));
+	p.y +=       _G_amplitude * sin(PI * ((u + v + 0.25 + t)*_G_v_ripple_frequency));
+	p.y *= 1 / 2.5;
+	p.z = v;
+
+	return p;
+}
+
+float3 Ripple(float u, float v, float t){
+	t *= _G_anim_scale;
+
+	float dist = sqrt(u*u + v*v);
+	float3 p;
+	p.x = u;
+	p.y = sin(4 * PI * (-1.0*dist*_G_frequency + t))*_G_amplitude*2;
+	p.y /= (10 + dist*100);
+	p.z = v;
+
+	return p;
+}
+
+float3 Sphere(float u, float v, float t){
+	t *= _G_anim_scale;
+
+	float uRipple = u*_G_h_ripple_frequency;
+	float vRipple = v*_G_v_ripple_frequency;
+	float r = _G_radius + sin(PI * uRipple + vRipple + t)*_G_amplitude*0.2;
+	float s = r * cos(PI * 0.5 * v);
+
+	float3 p;
+	p.x = s * sin(PI * u);
+	p.y = r * sin(PI * 0.5 * v);
+	p.z = s * cos(PI * u);
+	return p; // This is more like engine scale
+}
+
+float3 Torus(float u, float v, float t){
+	t *= _G_anim_scale;
+	float vRipple = v*_G_v_ripple_frequency;
+	float uRipple = u*_G_h_ripple_frequency;
+	float vRipple2 = v*_G_v_ripple_frequency2;
+	float uRipple2 = u*_G_h_ripple_frequency2;
+
+	float r1 = 0.7*_G_radius + 0.1 * _G_frequency * sin(PI * (6.0 * u*_G_v_ripple_frequency + v*_G_h_ripple_frequency + t)) * _G_amplitude;
+	float r2 = 0.15*_G_inner_radius + 0.05 * sin(PI * (8.0 * u*_G_v_ripple_frequency2 + 4.0 * v*_G_h_ripple_frequency2 + t)) * _G_amplitude;
+	float s = r2 * cos(PI * v) + r1;
+	float3 p;
+	p.x = s * sin(PI * u);
+	p.y = r2 * sin(PI * v);
+	p.z = s * cos(PI * u);
+	return p;
+}
+
+#define KERNEL_FUNCTION(curve) \
+	[numthreads(8, 8, 1)] \
+	void curve##Kernel (uint3 id: SV_DispatchThreadID) { \
+		float2 uv = GetUV(id); \
+		SetPosition(id, curve(uv.x, uv.y, _Time)); \
+	}
+
+#define KERNEL_MORPH_FUNCTION(curveA, curveB) \
+	[numthreads(8, 8, 1)] \
+	void curveA##To##curveB##Kernel (uint3 id: SV_DispatchThreadID) { \
+		float2 uv = GetUV(id); \
+		float3 position = lerp(curveA(uv.x, uv.y, _Time), curveB(uv.x, uv.y, _Time), _Progress);\
+		SetPosition(id, position); \
+	}
+
+KERNEL_FUNCTION(Wave)
+KERNEL_FUNCTION(MultiWave)
+KERNEL_FUNCTION(Ripple)
+KERNEL_FUNCTION(Sphere)
+KERNEL_FUNCTION(Torus)
+
+KERNEL_MORPH_FUNCTION(Wave, MultiWave)
+KERNEL_MORPH_FUNCTION(Wave, Ripple)
+KERNEL_MORPH_FUNCTION(Wave, Sphere)
+KERNEL_MORPH_FUNCTION(Wave, Torus)
+
+KERNEL_MORPH_FUNCTION(MultiWave, Wave)
+KERNEL_MORPH_FUNCTION(MultiWave, Ripple)
+KERNEL_MORPH_FUNCTION(MultiWave, Sphere)
+KERNEL_MORPH_FUNCTION(MultiWave, Torus)
+
+KERNEL_MORPH_FUNCTION(Ripple, Wave)
+KERNEL_MORPH_FUNCTION(Ripple, MultiWave)
+KERNEL_MORPH_FUNCTION(Ripple, Sphere)
+KERNEL_MORPH_FUNCTION(Ripple, Torus)
+
+KERNEL_MORPH_FUNCTION(Sphere, Wave)
+KERNEL_MORPH_FUNCTION(Sphere, MultiWave)
+KERNEL_MORPH_FUNCTION(Sphere, Ripple)
+KERNEL_MORPH_FUNCTION(Sphere, Torus)
+
+KERNEL_MORPH_FUNCTION(Torus, Wave)
+KERNEL_MORPH_FUNCTION(Torus, MultiWave)
+KERNEL_MORPH_FUNCTION(Torus, Ripple)
+KERNEL_MORPH_FUNCTION(Torus, Sphere)
