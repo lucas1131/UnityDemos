@@ -17,12 +17,20 @@ public readonly struct SmallXXHash {
 
 	public SmallXXHash Eat(int data) => RotateLeft(accumulator + ((uint) data * primeC), 17) * primeD;
 	public SmallXXHash Eat(byte data) => RotateLeft(accumulator + data*primeE, 11) * primeA;
-
-	// There is no rotate vectorized instruction so we use two bit shifts 
-	// and OR to rotate since these instructions does have vectorization
-	static uint RotateLeft (uint data, int steps) => (data << steps) | (data >> 32 - steps);
+	public uint ByteA() => (uint) this & 0xFF;
+	public uint ByteB() => ((uint) this >> 8) & 0xFF;
+	public uint ByteC() => ((uint) this >> 16) & 0xFF;
+	public uint ByteD() => (uint) this >> 24;
+	public float Float01A() => (float) ByteA() * (1f / 255f);
+	public float Float01B() => (float) ByteB() * (1f / 255f);
+	public float Float01C() => (float) ByteC() * (1f / 255f);
+	public float Float01D() => (float) ByteD() * (1f / 255f);
+	public uint GetBits(int shift, int count) => ((uint) this >> shift) & (uint) ((1 << count) - 1);
+	public float GetBitsAsFloat01(int shift, int count) => (float) GetBits(shift, count) * (1f / ((1 << count) - 1)); 
 
 	public static SmallXXHash Seed(uint seed) => new SmallXXHash((uint) seed + primeE);
+	public static SmallXXHash Select(SmallXXHash ifFalse, SmallXXHash ifTrue, bool condition) => 
+		math.select(ifFalse.accumulator, ifTrue.accumulator, condition);
 
 	public static SmallXXHash operator + (SmallXXHash hash, int v) => hash.accumulator + (uint) v;
 	public static implicit operator SmallXXHash(uint accumulator) => new SmallXXHash(accumulator);
@@ -35,6 +43,10 @@ public readonly struct SmallXXHash {
 		avalanche ^= avalanche >> 16; 
 		return avalanche;
 	}
+
+	// There is no rotate vectorized instruction so we use two bit shifts 
+	// and OR to rotate since these instructions does have vectorization
+	static uint RotateLeft (uint data, int steps) => (data << steps) | (data >> 32 - steps);
 }
 
 public readonly struct SmallXXHash4 {
@@ -62,11 +74,9 @@ public readonly struct SmallXXHash4 {
 	public uint4 GetBits(int shift, int count) => ((uint4) this >> shift) & (uint) ((1 << count) - 1);
 	public float4 GetBitsAsFloat01(int shift, int count) => (float4) GetBits(shift, count) * (1f / ((1 << count) - 1));
 
-	// There is no rotate vectorized instruction so we use two bit shifts 
-	// and OR to rotate since these instructions does have vectorization
-	static uint4 RotateLeft (uint4 data, int steps) => (data << steps) | (data >> 32 - steps);
-
 	public static SmallXXHash4 Seed(uint4 seed) => new SmallXXHash4((uint4) seed + primeE);
+	public static SmallXXHash4 Select(SmallXXHash4 ifFalse, SmallXXHash4 ifTrue, bool4 condition) => 
+		math.select(ifFalse.accumulator, ifTrue.accumulator, condition);
 
 	public static SmallXXHash4 operator + (SmallXXHash4 hash, int v) => hash.accumulator + (uint) v;
 	public static implicit operator SmallXXHash4(uint4 accumulator) => new SmallXXHash4(accumulator);
@@ -80,4 +90,9 @@ public readonly struct SmallXXHash4 {
 		avalanche ^= avalanche >> 16; 
 		return avalanche;
 	}
+
+	// There is no rotate vectorized instruction so we use two bit shifts 
+	// and OR to rotate since these instructions does have vectorization
+	static uint4 RotateLeft (uint4 data, int steps) => (data << steps) | (data >> 32 - steps);
+
 }}

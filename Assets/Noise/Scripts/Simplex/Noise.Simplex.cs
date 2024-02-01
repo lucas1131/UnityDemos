@@ -56,15 +56,20 @@ public static partial class Noise {
 			int4 latticeZ0 = (int4) floor(skewZ);
 			int4 latticeX1 = latticeX0 + 1;
 			int4 latticeZ1 = latticeZ0 + 1;
+			
+			bool4 isAboveXZDiagonal = skewX - latticeX0 > skewZ - latticeZ0;
+			int4 selectedX = select(latticeX0, latticeX1, isAboveXZDiagonal);
+			int4 selectedZ = select(latticeZ1, latticeZ0, isAboveXZDiagonal);
 
 			SmallXXHash4 hx0 = hash.Eat(latticeX0);
 			SmallXXHash4 hx1 = hash.Eat(latticeX1);
+			SmallXXHash4 selectedH = SmallXXHash4.Select(hx0, hx1, isAboveXZDiagonal);
+
 
 			return gradient.EvaluateCombined(
 				Kernel(hx0.Eat(latticeZ0), latticeX0, latticeZ0, positions) +
-				Kernel(hx0.Eat(latticeZ1), latticeX0, latticeZ1, positions) +
-				Kernel(hx1.Eat(latticeZ0), latticeX1, latticeZ0, positions) +
-				Kernel(hx1.Eat(latticeZ1), latticeX1, latticeZ1, positions)
+				Kernel(hx1.Eat(latticeZ1), latticeX1, latticeZ1, positions) +
+				Kernel(selectedH.Eat(selectedZ), selectedX, selectedZ, positions)
 			);
 		}
 	}
