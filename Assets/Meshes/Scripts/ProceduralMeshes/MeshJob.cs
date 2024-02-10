@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace Meshes.ProceduralMeshes {
 
+public delegate JobHandle MeshJobScheduleDelegate(Mesh mesh, Mesh.MeshData meshData, int resolution, JobHandle dependency);
+
 [BurstCompile(FloatPrecision.Standard, FloatMode.Fast, CompileSynchronously = true)]
 public struct MeshJob<G, S> : IJobFor
 	where G : struct, IMeshGenerator
@@ -15,11 +17,21 @@ public struct MeshJob<G, S> : IJobFor
 	G generator;
 	[WriteOnly] S stream;
 
-	public void Execute(int index) => generator.Execute(index, stream);
+	public void Execute(int index) {
+		generator.Execute(index, stream);
+	}
 
-	public static JobHandle ScheduleParallel(Mesh.MeshData meshData, JobHandle dependency) {
+	public static JobHandle ScheduleParallel(Mesh mesh, Mesh.MeshData meshData, int resolution, JobHandle dependency) {
 		var job = new MeshJob<G, S>();
-		job.stream.Setup(meshData, job.generator.VertexCount, job.generator.IndexCount);
+		job.generator.Resolution = resolution;
+		mesh.bounds = job.generator.Bounds;
+
+		job.stream.Setup(
+			meshData,
+			job.generator.Bounds,
+			job.generator.VertexCount,
+			job.generator.IndexCount
+		);
 		return job.ScheduleParallel(job.generator.JobLength, 1, dependency);
 	}
 }}
