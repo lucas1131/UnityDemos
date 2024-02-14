@@ -8,7 +8,6 @@ void Ripple_float(
 	out float3 NormalOut,
 	out float3 TangentOut
 ){
-
 	float3 p = PositionIn - Origin;
 	float d = length(p);
 	float f = 2.0 * PI * Period * (d - Speed * _Time.y);

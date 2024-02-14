@@ -23,13 +23,13 @@ public struct SquareGrid : IMeshGenerator {
 		new Vector3(1f, 0f, 1f)
 	);
 
-	public void Execute<S>(int zOffset, S stream) where S : struct, IMeshStream {
-		int vIndex = Resolution*zOffset*VERTICES_PER_QUAD;
-		int tIndex = Resolution*zOffset*TRIANGLES_PER_QUAD;
+	public void Execute<S>(int z, S stream) where S : struct, IMeshStream {
+		int vIndex = Resolution*z*VERTICES_PER_QUAD;
+		int tIndex = Resolution*z*TRIANGLES_PER_QUAD;
 
-		for(int xOffset = 0; xOffset < Resolution; xOffset++){
-			float2 xCoordinates = float2(xOffset, xOffset+1f)/Resolution - 0.5f;
-			float2 zCoordinates = float2(zOffset, zOffset+1f)/Resolution - 0.5f;
+		for(int x = 0; x < Resolution; x++){
+			float2 xCoordinates = float2(x, x+1f)/Resolution - 0.5f;
+			float2 zCoordinates = float2(z, z+1f)/Resolution - 0.5f;
 
 			Vertex template = new Vertex();
 			template.normal.y = 1f;

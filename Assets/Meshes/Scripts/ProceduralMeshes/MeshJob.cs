@@ -9,7 +9,7 @@ namespace Meshes.ProceduralMeshes {
 
 public delegate JobHandle MeshJobScheduleDelegate(Mesh mesh, Mesh.MeshData meshData, int resolution, JobHandle dependency);
 
-[BurstCompile(FloatPrecision.Standard, FloatMode.Fast, CompileSynchronously = true)]
+// [BurstCompile(FloatPrecision.Standard, FloatMode.Fast, CompileSynchronously = true)]
 public struct MeshJob<G, S> : IJobFor
 	where G : struct, IMeshGenerator
 	where S : struct, IMeshStream {

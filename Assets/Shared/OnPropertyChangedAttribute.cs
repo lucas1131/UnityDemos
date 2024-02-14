@@ -1,3 +1,5 @@
+/* got from forums somewhere but didnt save the link sorry :c */
+
 using System.Linq;
 using UnityEngine;
 using UnityEditor;

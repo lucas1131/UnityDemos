@@ -22,27 +22,27 @@ public struct SharedSquareGrid : IMeshGenerator {
 		new Vector3(1f, 0f, 1f)
 	);
 
-	public void Execute<S>(int zOffset, S stream) where S : struct, IMeshStream {
-		int vIndex = (Resolution+1)*zOffset;
-		int tIndex = (zOffset-1) * 2*Resolution;
+	public void Execute<S>(int z, S stream) where S : struct, IMeshStream {
+		int vIndex = (Resolution+1)*z;
+		int tIndex = (z-1) * 2*Resolution;
 
 		Vertex template = new Vertex();
 		template.normal.y = 1f;
 		template.tangent.xw = float2(1f, -1f);
 
 		template.position.x = -0.5f;
-		template.position.z = (float) zOffset/Resolution - 0.5f;
-		template.texCoord0.y = (float) zOffset/Resolution;
+		template.position.z = (float) z/Resolution - 0.5f;
+		template.texCoord0.y = (float) z/Resolution;
 		stream.SetVertex(vIndex, template);
 		vIndex++;
 
-		for(int xOffset = 1; xOffset <= Resolution; xOffset++){
+		for(int x = 1; x <= Resolution; x++){
 
-			template.position.x = (float) xOffset/Resolution - 0.5f;
-			template.texCoord0.x = (float) xOffset/Resolution;
+			template.position.x = (float) x/Resolution - 0.5f;
+			template.texCoord0.x = (float) x/Resolution;
 			stream.SetVertex(vIndex, template);
 
-			if(zOffset > 0) {
+			if(z > 0) {
 				int quadPoint0x0Relative = -Resolution-2; // 0
 				int quadPoint0x1Relative = -Resolution-1; // 1
 				int quadPoint1x0Relative = -1;            // 2
