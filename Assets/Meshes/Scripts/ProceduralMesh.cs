@@ -177,8 +177,10 @@ public class ProceduralMesh : MonoBehaviour {
 		scale *= gizmosScale;
 		for (int i = 0; i < vertices.Length; i++) {
 			Vector3 position = t.TransformPoint(vertices[i]);
+			float colorStep = 1f / (vertices.Length - 3);
 			if (drawVertices) {
-				Gizmos.color = Color.cyan;
+				float c = i*colorStep;
+				Gizmos.color = new Color(0f, c, c);
 				Gizmos.DrawSphere(position, scale);
 			}
 			if (drawNormals) {

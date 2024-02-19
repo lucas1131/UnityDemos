@@ -16,16 +16,16 @@ public struct OctaSphere : IMeshGenerator {
 	}
 
 	const int TRIANGLES_PER_QUAD = 2;
-	const int RHOMBUS_QUADS = 4;
+	const int NUMBER_OF_RHOMBUSES = 4;
 	const int SOUTH_POLE_INDEX = 0;
 	const int NORTH_POLE_INDEX = 4;
 
 	public int Resolution { get; set; }
 	public int ResolutionSqrd => Resolution*Resolution;
 
-	public int VertexCount => RHOMBUS_QUADS * ResolutionSqrd + 2 * Resolution + 7;
-	public int IndexCount => RHOMBUS_QUADS * TRIANGLES_PER_QUAD * ResolutionSqrd * 3;
-	public int JobLength => RHOMBUS_QUADS * Resolution + 1;
+	public int VertexCount => NUMBER_OF_RHOMBUSES * ResolutionSqrd + 2 * Resolution + 7;
+	public int IndexCount => NUMBER_OF_RHOMBUSES * TRIANGLES_PER_QUAD * ResolutionSqrd * 3;
+	public int JobLength => NUMBER_OF_RHOMBUSES * Resolution + 1;
 	public Bounds Bounds => new Bounds(Vector3.zero, new Vector3(2f, 2f, 2f));
 
 	public void Execute<S>(int idx, S stream) where S : struct, IMeshStream {
@@ -38,11 +38,36 @@ public struct OctaSphere : IMeshGenerator {
 
 	public void ExecuteRegular<S>(int idx, S stream) where S : struct, IMeshStream {
 
-		int u = idx / RHOMBUS_QUADS;
-		Rhombus rhombus = GetRhombus(idx - RHOMBUS_QUADS * u);
+		int u = idx / NUMBER_OF_RHOMBUSES;
+		Rhombus rhombus = GetRhombus(idx - NUMBER_OF_RHOMBUSES * u);
 		int vIndex = Resolution*(Resolution*rhombus.id + u + 2) + 7; // Vertices 0 and 1 are poles hardcoded below
 		int tIndex = Resolution*(Resolution*rhombus.id + u)*TRIANGLES_PER_QUAD;
+
 		bool isFirstColumn = u == 0;
+		// int4 quad = 0;
+		// if (rhombus.id == 0) {
+		// 	quad.x = vIndex;
+		// 	quad.y = isFirstColumn ? 0 : vIndex - Resolution;
+		// 	quad.z = isFirstColumn ? 8 : vIndex - Resolution + 1;
+		// 	quad.w = vIndex + 1;
+		// }
+		// else if (isFirstColumn) {
+		// 	quad.x = vIndex;
+		// 	quad.y = rhombus.id;
+		// 	quad.z = vIndex - Resolution * (Resolution + u);
+		// 	quad.w = vIndex + 1;
+		// } else quad = 0;
+
+		int4 quad = int4(
+			vIndex, // x
+			isFirstColumn ? rhombus.id : vIndex - Resolution, // y
+			isFirstColumn
+				? rhombus.id == 0
+					? 8
+					: vIndex - Resolution * (Resolution + u)
+				: vIndex - Resolution + 1, // z
+			vIndex + 1 // w
+		);
 
 		u++;
 
@@ -56,41 +81,15 @@ public struct OctaSphere : IMeshGenerator {
 
 		// Displace rhombus origin
 		Vertex template = new Vertex();
-		template.position = columnBottomStart;
+		template.position = RhombusToSphere(columnBottomStart);
 		stream.SetVertex(vIndex, template);
-
-		int4 quad = 0;
-		if (rhombus.id == 0) {
-			quad.x = vIndex;
-			quad.y = isFirstColumn ? 0 : vIndex - Resolution;
-			quad.z = isFirstColumn ? 8 : vIndex - Resolution + 1;
-			quad.w = vIndex + 1;
-		}
-		else if (isFirstColumn) {
-			quad.x = vIndex;
-			quad.y = rhombus.id;
-			quad.z = vIndex - Resolution * (Resolution + u);
-			quad.w = vIndex + 1;
-		} else quad = 0;
-
-		// int4 quad = int4(
-		// 	vIndex, // x
-		// 	isFirstColumn ? rhombus.id : vIndex - Resolution, // y
-		// 	isFirstColumn
-		// 		? rhombus.id == 0
-		// 			? 8
-		// 			: vIndex - Resolution * (Resolution + u)
-		// 		: vIndex - Resolution + 1, // z
-		// 	vIndex + 1 // w
-		// );
-
 		vIndex++;
 
 		for(int v = 1; v < Resolution; v++){
 			if(v <= Resolution-u){
-				template.position = lerp(columnBottomStart, columnBottomEnd, (float) v/Resolution);
+				template.position = RhombusToSphere(lerp(columnBottomStart, columnBottomEnd, (float) v/Resolution));
 			} else {
-				template.position = lerp(columnTopStart, columnTopEnd, (float) v/Resolution);
+				template.position = RhombusToSphere(lerp(columnTopStart, columnTopEnd, (float) v/Resolution));
 			}
 
 			stream.SetVertex(vIndex, template);
@@ -98,20 +97,24 @@ public struct OctaSphere : IMeshGenerator {
 			stream.SetTriangle(tIndex+0, quad.xyz);
 			stream.SetTriangle(tIndex+1, quad.xzw);
 
-			bool isFirstColumnButNotRhombus = isFirstColumn && rhombus.id != 0;
+			bool isFirstColumnAndNotRhombus = isFirstColumn && rhombus.id != 0;
 			quad.y = quad.z;
-			quad += int4(1, 0, isFirstColumnButNotRhombus ? Resolution : 1, 1);
+			quad += int4(1, 0, isFirstColumnAndNotRhombus ? Resolution : 1, 1);
 
 			vIndex++;
 			tIndex += TRIANGLES_PER_QUAD;
 		}
 
+		if(isFirstColumn && rhombus.id == 0){
+			quad.w = quad.z+1;
+		}
 		quad.z = ResolutionSqrd*rhombus.id + Resolution + u + 6;
 		quad.w = u < Resolution ? quad.z + 1 : rhombus.id + 4;
 
 		stream.SetTriangle(tIndex+0, quad.xyz);
 		stream.SetTriangle(tIndex+1, quad.xzw);
 	}
+
 
 	public void ExecutePolesAndSeam<S>(S stream) where S : struct, IMeshStream {
 		Vertex template = new Vertex();
@@ -141,9 +144,9 @@ public struct OctaSphere : IMeshGenerator {
 
 		for(int v = 1; v < 2*Resolution; v++){
 			if(v < Resolution){
-				template.position = lerp(down(), back(), (float) v/Resolution);
+				template.position = RhombusToSphere(lerp(down(), back(), (float) v/Resolution));
 			} else {
-				template.position = lerp(back(), up(), (float) (v-Resolution)/Resolution);
+				template.position = RhombusToSphere(lerp(back(), up(), (float) (v-Resolution)/Resolution));
 			}
 
 			template.normal = template.position;
@@ -151,7 +154,7 @@ public struct OctaSphere : IMeshGenerator {
 		}
 	}
 
-	static float3 RhombusToSphere(float3 p) => p * sqrt(1f - ((p*p).yxx + (p*p).zzy)/2f + (p*p).yxx * (p*p).zzy/3f);
+	static float3 RhombusToSphere(float3 p) => normalize(p);
 
 	static Rhombus GetRhombus(int id) => id switch {
 		0 => new Rhombus {
