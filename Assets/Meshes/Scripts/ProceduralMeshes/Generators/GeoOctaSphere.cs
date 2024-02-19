@@ -5,9 +5,11 @@ using UnityEngine;
 
 using static Unity.Mathematics.math;
 
+using quaternion = Unity.Mathematics.quaternion;
+
 namespace Meshes.ProceduralMeshes.Generators {
 
-public struct OctaSphere : IMeshGenerator {
+public struct GeoOctaSphere : IMeshGenerator {
 
 	struct Rhombus {
 		public int id;
@@ -42,7 +44,6 @@ public struct OctaSphere : IMeshGenerator {
 		template.texCoord0.x = 0.125f;
 
 		for(int i = 0; i < 4; i++){
-
 			// South pole
 			template.position = down();
 			template.normal = down();
@@ -64,14 +65,13 @@ public struct OctaSphere : IMeshGenerator {
 
 
 		for(int v = 1; v < 2*Resolution; v++){
-			if(v < Resolution){
-				template.position = RhombusToSphere(lerp(down(), back(), (float) v/Resolution));
-			} else {
-				template.position = RhombusToSphere(lerp(back(), up(), (float) (v-Resolution)/Resolution));
-			}
-
-			template.texCoord0.y = GetTexCoord0(template.position).y;
+			sincos(
+				PI + PI*v/(2*Resolution),
+				out template.position.z,
+				out template.position.y
+			);
 			template.normal = template.position;
+			template.texCoord0.y = (float) v/(2f*Resolution);
 			stream.SetVertex(v + 7, template);
 		}
 	}
@@ -111,34 +111,41 @@ public struct OctaSphere : IMeshGenerator {
 
 		u++;
 
-		float3 columnBottomDir = rhombus.rightCorner - down();
-		float3 columnBottomStart = down() + columnBottomDir * u/Resolution;
-		float3 columnBottomEnd = rhombus.leftCorner + columnBottomDir * u/Resolution;
-
-		float3 columnTopDir = up() - rhombus.leftCorner;
-		float3 columnTopStart = rhombus.rightCorner + columnTopDir * ((float) u/Resolution - 1f);
-		float3 columnTopEnd = rhombus.leftCorner + columnTopDir * u/Resolution;
-
 		// Displace rhombus origin
 		Vertex template = new Vertex();
-		template.position = RhombusToSphere(columnBottomStart);
+		sincos(
+			PI + PI*u/(2*Resolution),
+			out float sine,
+			out template.position.y
+		);
+		template.position -= sine*rhombus.rightCorner;
 		template.normal = template.position;
 		template.tangent.xz = GetTangentXZ(template.position);
 		template.tangent.w = -1f;
-		template.texCoord0 = GetTexCoord0(template.position);
+		template.texCoord0.x = rhombus.id*0.25f + 0.25f;
+		template.texCoord0.y = u/(2f*Resolution);
 		stream.SetVertex(vIndex, template);
 		vIndex++;
 
 		for(int v = 1; v < Resolution; v++){
-			if(v <= Resolution-u){
-				template.position = RhombusToSphere(lerp(columnBottomStart, columnBottomEnd, (float) v/Resolution));
-			} else {
-				template.position = RhombusToSphere(lerp(columnTopStart, columnTopEnd, (float) v/Resolution));
-			}
+			float height = u + v;
+			float3 rightPosition = 0f;
+			sincos(
+				PI + PI*height/(2f*Resolution),
+				out sine,
+				out rightPosition.y
+			);
+			float3 leftPosition = rightPosition - sine*rhombus.leftCorner;
+			rightPosition -= sine*rhombus.rightCorner;
+
+			float interpolator = v <= Resolution-u ? v/height : (Resolution-u)/(2f*Resolution-height);
+			float3 axis = normalize(cross(rightPosition, leftPosition));
+			float angle = acos(dot(rightPosition, leftPosition)) * interpolator;
+			template.position = mul(quaternion.AxisAngle(axis, angle), rightPosition);
 
 			template.normal = template.position;
 			template.tangent.xz = GetTangentXZ(template.position);
-			template.texCoord0 = GetTexCoord0(template.position);
+			template.texCoord0 = GetTexCoord(template.position);
 			stream.SetVertex(vIndex, template);
 
 			stream.SetTriangle(tIndex+0, quad.xyz);
@@ -163,8 +170,9 @@ public struct OctaSphere : IMeshGenerator {
 	}
 
 	static float2 GetTangentXZ(float3 p) => normalize(float2(-p.z, p.x));
-	static float3 RhombusToSphere(float3 p) => normalize(p);
-	static float2 GetTexCoord0(float3 p) {
+	// static float3 KindaRoundCubeToSphere(float3 p) => p; // For debugging
+	static float3 KindaRoundCubeToSphere(float3 p) => normalize(p);
+	static float2 GetTexCoord(float3 p) {
 		float u = atan2(p.x, p.z)/(-2f*PI) + 0.5f;
 		float v = asin(p.y)/PI + 0.5f;
 		float2 texCoord = float2(u, v);

@@ -7,7 +7,7 @@ using static Unity.Mathematics.math;
 
 namespace Meshes.ProceduralMeshes.Generators {
 
-public struct OctaSphere : IMeshGenerator {
+public struct IcoSphere : IMeshGenerator {
 
 	struct Rhombus {
 		public int id;
@@ -23,64 +23,16 @@ public struct OctaSphere : IMeshGenerator {
 	public int Resolution { get; set; }
 	public int ResolutionSqrd => Resolution*Resolution;
 
-	public int VertexCount => NUMBER_OF_RHOMBUSES * ResolutionSqrd + 2 * Resolution + 7;
+	public int VertexCount => NUMBER_OF_RHOMBUSES * ResolutionSqrd + 2;
 	public int IndexCount => NUMBER_OF_RHOMBUSES * TRIANGLES_PER_QUAD * ResolutionSqrd * 3;
-	public int JobLength => NUMBER_OF_RHOMBUSES * Resolution + 1;
+	public int JobLength => NUMBER_OF_RHOMBUSES * Resolution;
 	public Bounds Bounds => new Bounds(Vector3.zero, new Vector3(2f, 2f, 2f));
 
 	public void Execute<S>(int idx, S stream) where S : struct, IMeshStream {
-		if(idx == 0){
-			ExecutePolesAndSeam(stream);
-		} else {
-			ExecuteRegular(idx-1, stream);
-		}
-	}
-
-	public void ExecutePolesAndSeam<S>(S stream) where S : struct, IMeshStream {
-		Vertex template = new Vertex();
-		template.tangent = float4(sqrt(0.5f), 0f, sqrt(0.5f), -1f);
-		template.texCoord0.x = 0.125f;
-
-		for(int i = 0; i < 4; i++){
-
-			// South pole
-			template.position = down();
-			template.normal = down();
-			template.texCoord0.y = 0f;
-			stream.SetVertex(i, template);
-
-			// North pole
-			template.position = up();
-			template.normal = up();
-			template.texCoord0.y = 1f;
-			stream.SetVertex(i+4, template);
-
-			template.tangent.xz = GetTangentXZ(template.tangent.xyz);
-			template.texCoord0.x += 0.25f;
-		}
-
-		template.tangent.xz = float2(1f, 0f);
-		template.texCoord0.x = 0f;
-
-
-		for(int v = 1; v < 2*Resolution; v++){
-			if(v < Resolution){
-				template.position = RhombusToSphere(lerp(down(), back(), (float) v/Resolution));
-			} else {
-				template.position = RhombusToSphere(lerp(back(), up(), (float) (v-Resolution)/Resolution));
-			}
-
-			template.texCoord0.y = GetTexCoord0(template.position).y;
-			template.normal = template.position;
-			stream.SetVertex(v + 7, template);
-		}
-	}
-
-	public void ExecuteRegular<S>(int idx, S stream) where S : struct, IMeshStream {
 
 		int u = idx / NUMBER_OF_RHOMBUSES;
 		Rhombus rhombus = GetRhombus(idx - NUMBER_OF_RHOMBUSES * u);
-		int vIndex = Resolution*(Resolution*rhombus.id + u + 2) + 7; // Vertices 0 and 1 are poles hardcoded below
+		int vIndex = Resolution*(Resolution*rhombus.id + u) + 2;
 		int tIndex = Resolution*(Resolution*rhombus.id + u)*TRIANGLES_PER_QUAD;
 
 		bool isFirstColumn = u == 0;
@@ -100,10 +52,10 @@ public struct OctaSphere : IMeshGenerator {
 
 		int4 quad = int4(
 			vIndex, // x
-			isFirstColumn ? rhombus.id : vIndex - Resolution, // y
+			isFirstColumn ? 0 : vIndex - Resolution, // y
 			isFirstColumn
 				? rhombus.id == 0
-					? 8
+					? 3*ResolutionSqrd + 2
 					: vIndex - Resolution * (Resolution + u)
 				: vIndex - Resolution + 1, // z
 			vIndex + 1 // w
@@ -121,11 +73,15 @@ public struct OctaSphere : IMeshGenerator {
 
 		// Displace rhombus origin
 		Vertex template = new Vertex();
+
+		if(rhombus.id == 0){
+			template.position = down(); // South pole
+			stream.SetVertex(0, template);
+			template.position = up(); // North pole
+			stream.SetVertex(1, template);
+		}
+
 		template.position = RhombusToSphere(columnBottomStart);
-		template.normal = template.position;
-		template.tangent.xz = GetTangentXZ(template.position);
-		template.tangent.w = -1f;
-		template.texCoord0 = GetTexCoord0(template.position);
 		stream.SetVertex(vIndex, template);
 		vIndex++;
 
@@ -136,17 +92,13 @@ public struct OctaSphere : IMeshGenerator {
 				template.position = RhombusToSphere(lerp(columnTopStart, columnTopEnd, (float) v/Resolution));
 			}
 
-			template.normal = template.position;
-			template.tangent.xz = GetTangentXZ(template.position);
-			template.texCoord0 = GetTexCoord0(template.position);
 			stream.SetVertex(vIndex, template);
 
 			stream.SetTriangle(tIndex+0, quad.xyz);
 			stream.SetTriangle(tIndex+1, quad.xzw);
 
-			bool isFirstColumnAndNotRhombus = isFirstColumn && rhombus.id != 0;
 			quad.y = quad.z;
-			quad += int4(1, 0, isFirstColumnAndNotRhombus ? Resolution : 1, 1);
+			quad += int4(1, 0, isFirstColumn ? Resolution : 1, 1);
 
 			vIndex++;
 			tIndex += TRIANGLES_PER_QUAD;
@@ -155,47 +107,53 @@ public struct OctaSphere : IMeshGenerator {
 		if(isFirstColumn && rhombus.id == 0){
 			quad.w = quad.z+1;
 		}
-		quad.z = ResolutionSqrd*rhombus.id + Resolution + u + 6;
-		quad.w = u < Resolution ? quad.z + 1 : rhombus.id + 4;
+		if(!isFirstColumn){
+			quad.z = ResolutionSqrd*(rhombus.id == 0 ? 4 : rhombus.id) - Resolution + u + 1;
+		}
+
+		quad.w = u < Resolution ? quad.z + 1 : 1;
 
 		stream.SetTriangle(tIndex+0, quad.xyz);
 		stream.SetTriangle(tIndex+1, quad.xzw);
 	}
 
-	static float2 GetTangentXZ(float3 p) => normalize(float2(-p.z, p.x));
-	static float3 RhombusToSphere(float3 p) => normalize(p);
-	static float2 GetTexCoord0(float3 p) {
-		float u = atan2(p.x, p.z)/(-2f*PI) + 0.5f;
-		float v = asin(p.y)/PI + 0.5f;
-		float2 texCoord = float2(u, v);
+	static float3 RhombusToSphere(float3 p) => p; // For debugging
+	// static float3 RhombusToSphere(float3 p) => normalize(p);
 
-		if(texCoord.x < 1e-6){
-			texCoord.x = 1f;
-		}
-
-		return texCoord;
+	static float3 GetCorner(int id) {
+		sincos(
+			0.4f*PI*id,
+			out float sine,
+			out float cosine
+		);
+		return float3(sine, 0, -cosine);
 	}
 
 	static Rhombus GetRhombus(int id) => id switch {
 		0 => new Rhombus {
 			id = id,
-			leftCorner = back(),
-			rightCorner = right()
+			leftCorner = GetCorner(0),
+			rightCorner = GetCorner(1)
 		},
 		1 => new Rhombus {
 			id = id,
-			leftCorner = right(),
-			rightCorner = forward()
+			leftCorner = GetCorner(1),
+			rightCorner = GetCorner(2)
 		},
 		2 => new Rhombus {
 			id = id,
-			leftCorner = forward(),
-			rightCorner = left()
+			leftCorner = GetCorner(2),
+			rightCorner = GetCorner(3)
+		},
+		3 => new Rhombus {
+			id = id,
+			leftCorner = GetCorner(3),
+			rightCorner = GetCorner(4)
 		},
 		_ => new Rhombus {
 			id = id,
-			leftCorner = left(),
-			rightCorner = back()
+			leftCorner = GetCorner(4),
+			rightCorner = GetCorner(0)
 		}
 	};
 }}

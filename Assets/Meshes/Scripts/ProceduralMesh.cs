@@ -19,7 +19,9 @@ public class ProceduralMesh : MonoBehaviour {
 		MeshJob<UVSphere, SingleStream>.ScheduleParallel,
 		MeshJob<CubeSphere, SingleStream>.ScheduleParallel,
 		MeshJob<SharedCubeSphere, PositionStream>.ScheduleParallel,
-		MeshJob<OctaSphere, PositionStream>.ScheduleParallel,
+		MeshJob<OctaSphere, SingleStream>.ScheduleParallel,
+		MeshJob<GeoOctaSphere, SingleStream>.ScheduleParallel,
+		MeshJob<IcoSphere, PositionStream>.ScheduleParallel,
 	};
 
 	public enum MeshType {
@@ -32,6 +34,8 @@ public class ProceduralMesh : MonoBehaviour {
 		CubeSphere,
 		SharedCubeSphere,
 		OctaSphere,
+		GeoOctaSphere,
+		IcoSphere,
 	};
 
 	public enum MaterialMode { Grid, LatLon, Cube }
