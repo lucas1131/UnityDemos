@@ -22,6 +22,7 @@ public class ProceduralMesh : MonoBehaviour {
 		MeshJob<OctaSphere, SingleStream>.ScheduleParallel,
 		MeshJob<GeoOctaSphere, SingleStream>.ScheduleParallel,
 		MeshJob<IcoSphere, PositionStream>.ScheduleParallel,
+		MeshJob<GeoIcoSphere, PositionStream>.ScheduleParallel,
 	};
 
 	public enum MeshType {
@@ -36,6 +37,7 @@ public class ProceduralMesh : MonoBehaviour {
 		OctaSphere,
 		GeoOctaSphere,
 		IcoSphere,
+		GeoIcoSphere,
 	};
 
 	public enum MaterialMode { Grid, LatLon, Cube }
