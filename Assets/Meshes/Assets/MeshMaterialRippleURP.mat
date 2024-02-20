@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MeshMaterialURP
-  m_Shader: {fileID: -6465566751694194690, guid: 7fba57b11a86e7e4cacd8ddef14206d0, type: 3}
+  m_Name: MeshMaterialRippleURP
+  m_Shader: {fileID: -6465566751694194690, guid: 3adfae1384f252b44871563e05562533, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
