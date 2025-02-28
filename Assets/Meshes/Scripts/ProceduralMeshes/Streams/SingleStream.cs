@@ -13,7 +13,7 @@ namespace Meshes.ProceduralMeshes.Streams {
 public struct SingleStream : IMeshStream {
 
     [StructLayout(LayoutKind.Sequential)]
-    struct Stream0 {
+    public struct Stream0 {
         public float3 position;
         public float3 normal;
         public float4 tangent;

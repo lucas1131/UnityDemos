@@ -19,11 +19,20 @@ public class ProceduralSurface : MonoBehaviour {
 		MeshJob<FlatHexagonGrid, SingleStream>.ScheduleParallel,
 		MeshJob<UVSphere, SingleStream>.ScheduleParallel,
 		MeshJob<CubeSphere, SingleStream>.ScheduleParallel,
-		MeshJob<SharedCubeSphere, PositionStream>.ScheduleParallel,
+
+		// MeshJob<SharedCubeSphere, PositionStream>.ScheduleParallel,
+		MeshJob<SharedCubeSphere, SingleStream>.ScheduleParallel, // TODO make surface job properly support other stream formats
+
 		MeshJob<OctaSphere, SingleStream>.ScheduleParallel,
 		MeshJob<GeoOctaSphere, SingleStream>.ScheduleParallel,
-		MeshJob<IcoSphere, PositionStream>.ScheduleParallel,
-		MeshJob<GeoIcoSphere, PositionStream>.ScheduleParallel,
+
+		// MeshJob<IcoSphere, PositionStream>.ScheduleParallel,
+		MeshJob<IcoSphere, SingleStream>.ScheduleParallel, // TODO make surface job properly support other stream formats
+
+
+		// MeshJob<GeoIcoSphere, PositionStream>.ScheduleParallel,
+		MeshJob<GeoIcoSphere, SingleStream>.ScheduleParallel, // TODO make surface job properly support other stream formats
+
 	};
 
 	public enum MeshType {

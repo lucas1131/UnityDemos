@@ -41,8 +41,7 @@ public class MoveCamera : MonoBehaviour {
             move *= crouchMultiplier;
 
         transform.Translate(move);
- 
-        if (Input.GetMouseButtonDown(1)){
+         if (Input.GetMouseButtonDown(1)){
             anchorPoint = new Vector3(Input.mousePosition.y, -Input.mousePosition.x);
             anchorRot = transform.rotation;
         }
@@ -50,7 +49,15 @@ public class MoveCamera : MonoBehaviour {
         if (Input.GetMouseButton(1)){
             Quaternion rot = anchorRot;
             Vector3 dif = anchorPoint - new Vector3(Input.mousePosition.y, -Input.mousePosition.x);
-            rot.eulerAngles += dif * sensitivity;
+
+            Vector3 newAngles = rot.eulerAngles + dif * sensitivity;
+            if(newAngles.y < -85.0f){
+                newAngles.y = -85.0f;
+            } else if (newAngles.y > 85.0f){
+                newAngles.y = 85.0f;
+            }
+
+            rot.eulerAngles = newAngles;
             transform.rotation = rot;
         }
     }
