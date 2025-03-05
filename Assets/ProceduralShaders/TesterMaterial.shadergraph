@@ -3545,7 +3545,7 @@
     "m_ObjectId": "52caa52895754d82b48a19f5f077e5d8",
     "m_Title": "Vaporwave",
     "m_Position": {
-        "x": 706.9998779296875,
+        "x": 707.0,
         "y": -756.0
     }
 }
@@ -4611,21 +4611,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "7c462da06dee4c93b2ee571c32551a14",
-    "m_Id": 1179146515,
-    "m_DisplayName": "Radius",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "_Radius",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.ColorRGBMaterialSlot",
     "m_ObjectId": "7c84bb70b41848bf9df2194ab7472745",
     "m_Id": 0,
@@ -4796,7 +4781,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_OutlineColor",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 0.05629228428006172,
         "y": 0.2968316078186035,
@@ -5382,7 +5367,7 @@
     "m_Title": "Buttons",
     "m_Position": {
         "x": -1220.0,
-        "y": -917.5000610351563
+        "y": -917.5
     }
 }
 
@@ -6308,9 +6293,6 @@
             "m_Id": "e8b9563e22984a68bca17d1cc31c89e2"
         },
         {
-            "m_Id": "7c462da06dee4c93b2ee571c32551a14"
-        },
-        {
             "m_Id": "d0f086b1ac5340a3a96f49928d4f4d9c"
         },
         {
@@ -6415,8 +6397,8 @@
     "m_ObjectId": "c3618f7032234135a64348ef0a26c7dc",
     "m_Title": "Grid",
     "m_Position": {
-        "x": 428.5,
-        "y": 1456.000244140625
+        "x": 428.4999694824219,
+        "y": 1456.0
     }
 }
 
@@ -8108,7 +8090,7 @@
     "m_Title": "Testing new SDFs",
     "m_Position": {
         "x": -1337.5,
-        "y": 254.99998474121095
+        "y": 254.99993896484376
     }
 }
 
