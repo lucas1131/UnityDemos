@@ -1398,7 +1398,7 @@
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": true,
-    "m_CustomSlotLabel": "TimeIn",
+    "m_CustomSlotLabel": "Time",
     "m_DismissedVersion": 0,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
