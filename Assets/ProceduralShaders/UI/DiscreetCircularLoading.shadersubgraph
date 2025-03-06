@@ -488,6 +488,20 @@
             },
             "m_InputSlot": {
                 "m_Node": {
+                    "m_Id": "223d63a5d5f2423e9648d7952752fa7b"
+                },
+                "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "d462807991d34dc4b5eedf29c5ac6535"
+                },
+                "m_SlotId": 2
+            },
+            "m_InputSlot": {
+                "m_Node": {
                     "m_Id": "7fa55ef4b6df48b3909569ae1fe8ee42"
                 },
                 "m_SlotId": 2
@@ -854,6 +868,9 @@
     "m_Slots": [
         {
             "m_Id": "f587e8d125f7441d8526cac0d9ce456d"
+        },
+        {
+            "m_Id": "9b7a6c2e065942d69adec8135936487c"
         }
     ],
     "synonyms": [],
@@ -1290,7 +1307,7 @@
     "m_Title": "This could become a radar effect of something similar",
     "m_Position": {
         "x": -1219.0,
-        "y": 581.0000610351563
+        "y": 581.0
     }
 }
 
@@ -2410,6 +2427,21 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "_Size",
     "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "9b7a6c2e065942d69adec8135936487c",
+    "m_Id": 2,
+    "m_DisplayName": "Alpha",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Alpha",
+    "m_StageCapability": 2,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
