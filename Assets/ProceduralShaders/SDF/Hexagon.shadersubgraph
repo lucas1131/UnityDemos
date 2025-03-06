@@ -16,9 +16,6 @@
             "m_Id": "24ffc0fcfad44bfa93c1c88c292f8bcd"
         },
         {
-            "m_Id": "d45a64c865ae4834bda78787eb385323"
-        },
-        {
             "m_Id": "b3e59e12cb27475f87076ec7f4b2d355"
         }
     ],
@@ -4967,7 +4964,7 @@
     "m_Title": "",
     "m_Position": {
         "x": -2130.999755859375,
-        "y": 528.9999389648438
+        "y": 528.9998779296875
     }
 }
 
@@ -5305,34 +5302,6 @@
     },
     "m_Property": {
         "m_Id": "b3e59e12cb27475f87076ec7f4b2d355"
-    }
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
-    "m_ObjectId": "d45a64c865ae4834bda78787eb385323",
-    "m_Guid": {
-        "m_GuidSerialized": "68dfddc7-1ab4-4fa0-aaae-3e58eeb19091"
-    },
-    "m_Name": "WidthHeight",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "WidthHeight",
-    "m_DefaultReferenceName": "_WidthHeight",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 0.0,
-        "w": 0.0
     }
 }
 
@@ -6205,9 +6174,6 @@
         },
         {
             "m_Id": "24ffc0fcfad44bfa93c1c88c292f8bcd"
-        },
-        {
-            "m_Id": "d45a64c865ae4834bda78787eb385323"
         }
     ]
 }
