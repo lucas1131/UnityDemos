@@ -2190,8 +2190,8 @@
     "m_ObjectId": "d4a0ae3450cc48dba3ca33f47256a3c8",
     "m_Title": "Sphere normals",
     "m_Position": {
-        "x": 1191.0001220703125,
-        "y": -280.99993896484377
+        "x": 1191.0,
+        "y": -281.0
     }
 }
 
