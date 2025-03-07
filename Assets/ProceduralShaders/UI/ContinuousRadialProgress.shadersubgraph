@@ -46,6 +46,9 @@
     "m_CategoryData": [
         {
             "m_Id": "831c03eb1b15443faa2e913c7c1a2a92"
+        },
+        {
+            "m_Id": "2a223640f92949d596d6c6979ec01ab2"
         }
     ],
     "m_Nodes": [
@@ -1442,6 +1445,27 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "2a223640f92949d596d6c6979ec01ab2",
+    "m_Name": "Coloring",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "b3cd31bd068f483faade8b1336ded5e4"
+        },
+        {
+            "m_Id": "b8d6fad234484b759f629eaba78c401e"
+        },
+        {
+            "m_Id": "69ff44432cf54f168faec1f49a1aee77"
+        },
+        {
+            "m_Id": "57b4bad7048c4ab29d0796d181dbc545"
+        }
+    ]
 }
 
 {
@@ -3212,18 +3236,6 @@
         },
         {
             "m_Id": "e1e2bb44b9f940cbb81b3e9531cb9b64"
-        },
-        {
-            "m_Id": "b3cd31bd068f483faade8b1336ded5e4"
-        },
-        {
-            "m_Id": "b8d6fad234484b759f629eaba78c401e"
-        },
-        {
-            "m_Id": "69ff44432cf54f168faec1f49a1aee77"
-        },
-        {
-            "m_Id": "57b4bad7048c4ab29d0796d181dbc545"
         },
         {
             "m_Id": "f9887f23db1445f2b033d6d37522ee00"
