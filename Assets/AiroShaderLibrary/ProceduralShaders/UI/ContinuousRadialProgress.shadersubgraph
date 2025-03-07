@@ -881,12 +881,12 @@
     },
     "m_PreviewData": {
         "serializedMesh": {
-            "m_SerializedMesh": "{\"mesh\":{\"instanceID\":0}}",
+            "m_SerializedMesh": "{\"mesh\":{\"fileID\":10210,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
         },
-        "preventRotation": false
+        "preventRotation": true
     },
-    "m_Path": "Procedural/UI",
+    "m_Path": "AiroLibrary/Procedural/UI",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 1,
     "m_OutputNode": {
@@ -3651,10 +3651,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "94dcec89fea44c1fbd861b1ed001dd22",
     "m_Id": -903897538,
-    "m_DisplayName": "Rotation",
+    "m_DisplayName": "Phase",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "_Rotation",
+    "m_ShaderOutputName": "_Phase",
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,

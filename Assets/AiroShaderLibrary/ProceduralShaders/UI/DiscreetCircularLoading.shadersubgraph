@@ -552,12 +552,12 @@
     },
     "m_PreviewData": {
         "serializedMesh": {
-            "m_SerializedMesh": "{\"mesh\":{\"instanceID\":0}}",
+            "m_SerializedMesh": "{\"mesh\":{\"fileID\":10210,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
         },
-        "preventRotation": false
+        "preventRotation": true
     },
-    "m_Path": "Procedural/UI",
+    "m_Path": "AiroLibrary/Procedural/UI",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 1,
     "m_OutputNode": {
@@ -1306,7 +1306,7 @@
     "m_ObjectId": "57350cc00ae74ddcbad72d2ef6ea5158",
     "m_Title": "This could become a radar effect of something similar",
     "m_Position": {
-        "x": -1219.0,
+        "x": -1219.0001220703125,
         "y": 581.0
     }
 }

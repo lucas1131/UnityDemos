@@ -384,7 +384,7 @@
         },
         "preventRotation": false
     },
-    "m_Path": "Procedural/Effects",
+    "m_Path": "AiroLibrary/Procedural/Effects",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 1,
     "m_OutputNode": {
@@ -834,7 +834,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Thickness",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": 0.009999999776482582,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -1073,7 +1073,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "BlurMask",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -1603,7 +1603,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Size",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": 0.9300000071525574,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -1681,7 +1681,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Tiling",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 10.0,
         "y": 64.0
@@ -2137,7 +2137,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_UV",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 0.0,
         "y": 0.0

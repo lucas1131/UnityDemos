@@ -143,7 +143,7 @@
         },
         "preventRotation": false
     },
-    "m_Path": "Procedural/SDF/Operators",
+    "m_Path": "AiroLibrary/Procedural/SDF/Operators",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 1,
     "m_OutputNode": {
