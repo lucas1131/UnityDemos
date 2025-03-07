@@ -1642,7 +1642,7 @@
     "m_ObjectId": "2171788b37d24348bd006c1fdc3ab14e",
     "m_Title": "Normal, Pressed and Select state modifiers",
     "m_Position": {
-        "x": -875.0000610351563,
+        "x": -875.0,
         "y": -649.0
     }
 }

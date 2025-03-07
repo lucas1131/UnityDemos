@@ -163,7 +163,7 @@
         },
         "preventRotation": false
     },
-    "m_Path": "Procedural/Helpers",
+    "m_Path": "AiroLibrary/UV",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 1,
     "m_OutputNode": {
