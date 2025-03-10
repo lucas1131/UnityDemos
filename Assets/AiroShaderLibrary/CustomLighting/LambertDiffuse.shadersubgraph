@@ -263,6 +263,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "204abf328a134d1fb2cf2fcc791c7b3d",
+    "m_Id": 1,
+    "m_DisplayName": "Ambient",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Ambient",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "2777910df5484e6a899b9b1e3b495489",
     "m_Id": 0,
@@ -564,7 +579,7 @@
     },
     "m_Slots": [
         {
-            "m_Id": "e769657afa3f404a86fa94f76ecf1f9e"
+            "m_Id": "204abf328a134d1fb2cf2fcc791c7b3d"
         }
     ],
     "synonyms": [],
@@ -814,29 +829,6 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
-    "m_ObjectId": "e769657afa3f404a86fa94f76ecf1f9e",
-    "m_Id": 1,
-    "m_DisplayName": "Ambient",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Ambient",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
-    "m_Labels": []
 }
 
 {

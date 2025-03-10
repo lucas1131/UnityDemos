@@ -129,34 +129,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "3d3ec80d2ee543a292112cdaa26e00d1"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "a40e85ec4b73487bbc778140a74a85a6"
-                },
-                "m_SlotId": -456417938
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "6016afd21b754dffb52896606e27143f"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "a40e85ec4b73487bbc778140a74a85a6"
-                },
-                "m_SlotId": -1863271099
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "6502e8f0071f4d3282e07dcb01232324"
                 },
                 "m_SlotId": 3
@@ -208,20 +180,6 @@
                     "m_Id": "b0db7e9d183e49debf5851c9039b6e31"
                 },
                 "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "9eb328018b484bbab050f18b6d58ab9e"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "a40e85ec4b73487bbc778140a74a85a6"
-                },
-                "m_SlotId": 1456562977
             }
         },
         {
@@ -1878,7 +1836,7 @@
     "m_Title": "\"Bake\" in fake ambient occlusion just so we have something to look at",
     "m_Position": {
         "x": -2120.0,
-        "y": 550.0000610351563
+        "y": 550.0
     }
 }
 
