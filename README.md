@@ -9,8 +9,8 @@ Procedural meshes mostly from these tutorials: https://catlikecoding.com/unity/t
 A decent chunk of the shader library is based on tutorials from Ben Cloward: https://www.youtube.com/@BenCloward
 
 Other resources:
+  - SDFs: https://iquilezles.org/articles/distfunctions2d/
   - http://www.ronja-tutorials.com/?flipped=true
   - https://thebookofshaders.com/
-  - https://iquilezles.org/articles/distfunctions2d/
   - https://learnopengl.com/
 
