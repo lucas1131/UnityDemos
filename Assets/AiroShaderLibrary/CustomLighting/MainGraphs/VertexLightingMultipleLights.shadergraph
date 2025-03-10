@@ -3797,7 +3797,7 @@
     "m_Title": "Blend Mettalic diffuse with Lambert and ambient diffuse",
     "m_Position": {
         "x": -2498.0,
-        "y": -957.0
+        "y": -957.0000610351563
     }
 }
 
@@ -3946,7 +3946,7 @@
     "m_Title": "Ambient Diffuse / Indirect Diffuse",
     "m_Position": {
         "x": -2820.0,
-        "y": -1228.0
+        "y": -1228.0001220703125
     }
 }
 
@@ -4229,7 +4229,7 @@
     "m_KeywordType": 0,
     "m_KeywordDefinition": 1,
     "m_KeywordScope": 1,
-    "m_KeywordStages": 2,
+    "m_KeywordStages": 1,
     "m_Entries": [],
     "m_Value": 1,
     "m_IsEditable": true
@@ -4901,7 +4901,7 @@
     "m_Title": "Main light + Shadow",
     "m_Position": {
         "x": -1127.0,
-        "y": -316.0
+        "y": -316.00006103515627
     }
 }
 
@@ -4982,8 +4982,8 @@
     "m_ObjectId": "607965dd1c00473187dac30d1e856e47",
     "m_Title": "Metalic * Ambient",
     "m_Position": {
-        "x": -100.0,
-        "y": -907.0
+        "x": -99.9999771118164,
+        "y": -907.0000610351563
     }
 }
 
@@ -6286,8 +6286,8 @@
     "m_ObjectId": "811c28d66a834684a7d0935b473c08bd",
     "m_Title": "Specular + Diffuse",
     "m_Position": {
-        "x": -1361.0,
-        "y": -533.0
+        "x": -1361.0001220703125,
+        "y": -533.0000610351563
     }
 }
 
@@ -6491,8 +6491,8 @@
     "m_ObjectId": "87cdc443e3a249ec8746f4dbff060b6b",
     "m_Title": "Specular * Diffuse",
     "m_Position": {
-        "x": -1774.0,
-        "y": -508.0
+        "x": -1774.0001220703125,
+        "y": -508.00006103515627
     }
 }
 
@@ -6895,8 +6895,8 @@
     "m_ObjectId": "96c046bf33eb4f1da814edf6eca22138",
     "m_Title": "\"Bake\" in fake ambient occlusion just so we have something to look at",
     "m_Position": {
-        "x": -1352.0,
-        "y": 1062.0
+        "x": -1352.0001220703125,
+        "y": 1062.0001220703125
     }
 }
 
@@ -8156,7 +8156,7 @@
     "m_Title": "Half Lambert Diffuse / Direct Diffuse",
     "m_Position": {
         "x": -2820.0,
-        "y": -595.0
+        "y": -595.0000610351563
     }
 }
 
@@ -9097,8 +9097,8 @@
     "m_ObjectId": "c208c0dec1b84c2796a5fbc583c6a4b2",
     "m_Title": "Direct Specular",
     "m_Position": {
-        "x": -3218.0,
-        "y": -159.0
+        "x": -3218.000244140625,
+        "y": -159.0001220703125
     }
 }
 
