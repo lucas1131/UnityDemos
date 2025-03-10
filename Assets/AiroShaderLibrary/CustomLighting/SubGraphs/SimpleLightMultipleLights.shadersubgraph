@@ -2919,7 +2919,7 @@
     "m_Title": "Normal",
     "m_Position": {
         "x": -1756.0,
-        "y": -463.0000305175781
+        "y": -463.0
     }
 }
 
@@ -3692,7 +3692,7 @@
     "m_Title": "Blend Mettalic diffuse with Lambert and ambient diffuse",
     "m_Position": {
         "x": -401.0,
-        "y": -589.0000610351563
+        "y": -589.0
     }
 }
 
@@ -4109,8 +4109,8 @@
     "m_ObjectId": "587056a461514a1fb9c45f9729b375ba",
     "m_Title": "Specular * Diffuse",
     "m_Position": {
-        "x": 336.00006103515627,
-        "y": -140.00001525878907
+        "x": 336.0,
+        "y": -140.0
     }
 }
 
@@ -5110,7 +5110,7 @@
     "m_Title": "Metalic * Ambient",
     "m_Position": {
         "x": 2010.0,
-        "y": -539.0000610351563
+        "y": -539.0
     }
 }
 
@@ -6053,8 +6053,8 @@
     "m_ObjectId": "96499100321d467883fb34dabcc13c3f",
     "m_Title": "Main light + Shadow",
     "m_Position": {
-        "x": 969.0001831054688,
-        "y": 51.9999885559082
+        "x": 969.0,
+        "y": 52.0
     }
 }
 
@@ -6914,7 +6914,7 @@
     "m_ObjectId": "aea321dd27c042509524e956dc0cae8d",
     "m_Title": "Specular + Diffuse",
     "m_Position": {
-        "x": 749.0001831054688,
+        "x": 749.0,
         "y": -165.0
     }
 }
@@ -7865,7 +7865,7 @@
     "m_Title": "Reflectance",
     "m_Position": {
         "x": -970.0,
-        "y": 497.00006103515627
+        "y": 497.0
     }
 }
 
@@ -8026,7 +8026,7 @@
     "m_Title": "Ambient Diffuse + Specular Reflection",
     "m_Position": {
         "x": 1589.0,
-        "y": 545.0001220703125
+        "y": 545.0
     }
 }
 
@@ -8264,7 +8264,7 @@
     "m_Title": "Ambient Diffuse / Indirect Diffuse",
     "m_Position": {
         "x": -710.0,
-        "y": -817.0000610351563
+        "y": -817.0
     }
 }
 
@@ -8850,7 +8850,7 @@
     "m_Title": "Ambient Reflections / Indirect Specular",
     "m_Position": {
         "x": -332.0,
-        "y": 690.0000610351563
+        "y": 690.0
     }
 }
 
@@ -9192,7 +9192,7 @@
     "m_Title": "Half Lambert Diffuse / Direct Diffuse",
     "m_Position": {
         "x": -710.0,
-        "y": -227.00001525878907
+        "y": -227.0
     }
 }
 
@@ -9816,7 +9816,7 @@
     "m_Title": "Direct Specular",
     "m_Position": {
         "x": -1108.0,
-        "y": 53.000003814697269
+        "y": 53.0
     }
 }
 

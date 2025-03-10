@@ -2091,7 +2091,7 @@
     "m_Title": "Normal",
     "m_Position": {
         "x": -1756.0,
-        "y": -462.99993896484377
+        "y": -463.0
     }
 }
 
@@ -2673,8 +2673,8 @@
     "m_ObjectId": "4c07c60313314892a541c670503cfdfe",
     "m_Title": "Blend Mettalic diffuse with Lambert and ambient diffuse",
     "m_Position": {
-        "x": -400.99993896484377,
-        "y": -589.0
+        "x": -401.00006103515627,
+        "y": -589.0000610351563
     }
 }
 
@@ -3067,8 +3067,8 @@
     "m_ObjectId": "587056a461514a1fb9c45f9729b375ba",
     "m_Title": "Specular * Diffuse",
     "m_Position": {
-        "x": 152.0001678466797,
-        "y": -0.99993896484375
+        "x": 152.0,
+        "y": -0.9998817443847656
     }
 }
 
@@ -4535,8 +4535,8 @@
     "m_ObjectId": "96499100321d467883fb34dabcc13c3f",
     "m_Title": "Main light + Shadow",
     "m_Position": {
-        "x": 969.0001831054688,
-        "y": 52.000083923339847
+        "x": 969.0,
+        "y": 52.000118255615237
     }
 }
 
@@ -5197,7 +5197,7 @@
     "m_ObjectId": "aea321dd27c042509524e956dc0cae8d",
     "m_Title": "Specular + Diffuse",
     "m_Position": {
-        "x": 749.0001831054688,
+        "x": 749.0,
         "y": -165.0
     }
 }
@@ -6018,7 +6018,7 @@
     "m_ObjectId": "ce8bd8b8afca4d3a88187f7097a0f73a",
     "m_Title": "Ambient Diffuse + Specular Reflection",
     "m_Position": {
-        "x": 1589.0,
+        "x": 1588.999755859375,
         "y": 545.0
     }
 }
@@ -6125,8 +6125,8 @@
     "m_ObjectId": "d5515a737fda4ed9bc0d36e7d9cc6e68",
     "m_Title": "Ambient Diffuse / Indirect Diffuse",
     "m_Position": {
-        "x": -601.9999389648438,
-        "y": -826.0
+        "x": -602.0,
+        "y": -825.9999389648438
     }
 }
 
@@ -6552,8 +6552,8 @@
     "m_ObjectId": "e7cbf68182a14d57bd52df447abe4ba4",
     "m_Title": "Ambient Reflections / Indirect Specular",
     "m_Position": {
-        "x": -333.0,
-        "y": 703.0001220703125
+        "x": -333.0001220703125,
+        "y": 703.0
     }
 }
 
@@ -6802,8 +6802,8 @@
     "m_ObjectId": "efff248db240427bb356ff1dd7ed1191",
     "m_Title": "Half Lambert Diffuse / Direct Diffuse",
     "m_Position": {
-        "x": -601.9999389648438,
-        "y": -236.0
+        "x": -602.0,
+        "y": -236.00006103515626
     }
 }
 
