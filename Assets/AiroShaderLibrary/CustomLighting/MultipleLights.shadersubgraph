@@ -59,7 +59,11 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "8fbc03a89dde429c9a26921100f094de"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -141,6 +145,48 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "bb91d2bfc4704407b6b8f85fa7c1dae6"
+                },
+                "m_SlotId": 3
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "bb91d2bfc4704407b6b8f85fa7c1dae6"
+                },
+                "m_SlotId": 7
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "070ed6b625234112a9f82b5454166aa3"
+                },
+                "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "bb91d2bfc4704407b6b8f85fa7c1dae6"
+                },
+                "m_SlotId": 8
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "070ed6b625234112a9f82b5454166aa3"
+                },
+                "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "bb91d2bfc4704407b6b8f85fa7c1dae6"
+                },
+                "m_SlotId": 9
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "070ed6b625234112a9f82b5454166aa3"
                 },
                 "m_SlotId": 3
             }
@@ -264,10 +310,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -214.0,
-            "y": -125.9999771118164,
-            "width": 100.99999237060547,
-            "height": 124.99998474121094
+            "x": -311.9999694824219,
+            "y": -134.0,
+            "width": 100.99998474121094,
+            "height": 125.0000228881836
         }
     },
     "m_Slots": [
@@ -611,6 +657,26 @@
         "z": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "8fbc03a89dde429c9a26921100f094de",
+    "m_Title": "Additional Lights does not support blur",
+    "m_Content": "im lazy\n",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -791.0,
+        "y": -319.0,
+        "width": 460.8227844238281,
+        "height": 60.63896179199219
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {

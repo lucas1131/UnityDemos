@@ -152,20 +152,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "3d3ec80d2ee543a292112cdaa26e00d1"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "93ad3798f35943ada4c389437ad1cf99"
-                },
-                "m_SlotId": -456417938
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "5a3dbe8e355d4473a531aa236c1623db"
                 },
                 "m_SlotId": 0
@@ -259,20 +245,6 @@
                     "m_Id": "b0db7e9d183e49debf5851c9039b6e31"
                 },
                 "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "9eb328018b484bbab050f18b6d58ab9e"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "93ad3798f35943ada4c389437ad1cf99"
-                },
-                "m_SlotId": 1456562977
             }
         },
         {
@@ -484,7 +456,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "_Metallic",
     "m_StageCapability": 3,
-    "m_Value": 0.20000000298023225,
+    "m_Value": 0.5,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }
@@ -2177,7 +2149,7 @@
     "m_ObjectId": "ac64f72143804b749b059b3cccb83ab8",
     "m_Title": "\"Bake\" in fake ambient occlusion just so we have something to look at",
     "m_Position": {
-        "x": -2119.999755859375,
+        "x": -2120.000244140625,
         "y": 550.0
     }
 }
