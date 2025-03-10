@@ -664,15 +664,15 @@
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "8fbc03a89dde429c9a26921100f094de",
     "m_Title": "Additional Lights does not support blur",
-    "m_Content": "im lazy\n",
+    "m_Content": "im lazy and my excuse is that blur will make this slow\n",
     "m_TextSize": 0,
     "m_Theme": 0,
     "m_Position": {
         "serializedVersion": "2",
         "x": -791.0,
         "y": -319.0,
-        "width": 460.8227844238281,
-        "height": 60.63896179199219
+        "width": 461.0,
+        "height": 100.0
     },
     "m_Group": {
         "m_Id": ""
