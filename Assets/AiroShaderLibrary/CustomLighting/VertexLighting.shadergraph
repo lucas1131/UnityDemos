@@ -1830,8 +1830,8 @@
     "m_ObjectId": "ac64f72143804b749b059b3cccb83ab8",
     "m_Title": "\"Bake\" in fake ambient occlusion just so we have something to look at",
     "m_Position": {
-        "x": -1494.0001220703125,
-        "y": 224.99984741210938
+        "x": -1494.0,
+        "y": 224.99998474121095
     }
 }
 
@@ -1933,7 +1933,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "BlinnSpecular",
+    "m_Name": "PhongSpecular",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -1974,13 +1974,15 @@
         "80cc70fa-a53e-44a1-a5c3-d6e74e83a28c",
         "b3ba13fe-39ce-405a-bd88-314c9f0116c7",
         "4e6ce673-9b47-4997-8d6b-19394ee1f3a9",
-        "a646c384-eeb9-4e4b-b1ae-e7e8bb2ab59b"
+        "a646c384-eeb9-4e4b-b1ae-e7e8bb2ab59b",
+        "4672bdf3-72f0-4a14-8c9c-cdbe195050ff"
     ],
     "m_PropertyIds": [
         -1357277905,
         2026349330,
         -1760430089,
-        -1688229577
+        -1688229577,
+        1308296086
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
