@@ -293,7 +293,7 @@
         },
         "preventRotation": false
     },
-    "m_Path": "AiroLibrary/Procedural/Helpers",
+    "m_Path": "AiroLibrary/Helpers",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 1,
     "m_OutputNode": {

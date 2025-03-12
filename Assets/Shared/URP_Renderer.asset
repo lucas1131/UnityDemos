@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
   m_Name: ACESApproximationTonemappingPass
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   injectionPoint: 600
   fetchColorBuffer: 1
   requirements: 0
@@ -132,7 +132,8 @@ MonoBehaviour:
   - {fileID: -5112289233331358887}
   - {fileID: -36526597276916671}
   - {fileID: -987966066645114364}
-  m_RendererFeatureMap: 343d34e94220190406894cfc0b0e7991bdcdce498fca8eacbf4b4e97eb73902e59f33a4207800db941a474d8403b7eff04627acb180a4af2
+  - {fileID: 2206641509684337856}
+  m_RendererFeatureMap: 343d34e94220190406894cfc0b0e7991bdcdce498fca8eacbf4b4e97eb73902e59f33a4207800db941a474d8403b7eff04627acb180a4af2c0dc5d03c3909f1e
   m_UseNativeRenderPass: 0
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -175,6 +176,26 @@ MonoBehaviour:
   fetchColorBuffer: 1
   requirements: 0
   passMaterial: {fileID: -876546973899608171, guid: af31a5f6c72377913a2fa4f9f9b44be7, type: 3}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
+--- !u!114 &2206641509684337856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: ScreenDistortionPass
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 0
+  passMaterial: {fileID: 2100000, guid: 78a08787ca30045abb69f6f7dd878e09, type: 2}
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
