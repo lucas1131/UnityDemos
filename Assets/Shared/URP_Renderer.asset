@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9059813481213116597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: DepthFogPass
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 1
+  passMaterial: {fileID: -876546973899608171, guid: b0556bbdbd5bb9915ac9143c87754067, type: 3}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
 --- !u!114 &-7964319021387708154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17,6 +37,26 @@ MonoBehaviour:
   fetchColorBuffer: 1
   requirements: 0
   passMaterial: {fileID: -876546973899608171, guid: 318c155295a5c3767bc4b00074f7b200, type: 3}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
+--- !u!114 &-7952562142938774735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: BlurPass
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 0
+  passMaterial: {fileID: -876546973899608171, guid: 680d03a47b91b188da359c1ff8d1f96a, type: 3}
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
@@ -57,6 +97,26 @@ MonoBehaviour:
   fetchColorBuffer: 1
   requirements: 0
   passMaterial: {fileID: -876546973899608171, guid: 60fb6f2e50a3bf0ceac12d85b57b5462, type: 3}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
+--- !u!114 &-2828020489350246891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: UnderwaterPass
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 1
+  passMaterial: {fileID: -876546973899608171, guid: 1d5ae68434e9a20aeb7e6a105baf2f12, type: 3}
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
@@ -133,7 +193,12 @@ MonoBehaviour:
   - {fileID: -36526597276916671}
   - {fileID: -987966066645114364}
   - {fileID: 2206641509684337856}
-  m_RendererFeatureMap: 343d34e94220190406894cfc0b0e7991bdcdce498fca8eacbf4b4e97eb73902e59f33a4207800db941a474d8403b7eff04627acb180a4af2c0dc5d03c3909f1e
+  - {fileID: 2619027797056556009}
+  - {fileID: -7952562142938774735}
+  - {fileID: -9059813481213116597}
+  - {fileID: 7382676540901282689}
+  - {fileID: -2828020489350246891}
+  m_RendererFeatureMap: 343d34e94220190406894cfc0b0e7991bdcdce498fca8eacbf4b4e97eb73902e59f33a4207800db941a474d8403b7eff04627acb180a4af2c0dc5d03c3909f1ee90b6ebce7a758243143ea8fddd2a2914b3fffc8a313458281d307e832897466158ec03259dac0d8
   m_UseNativeRenderPass: 0
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -191,11 +256,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
   m_Name: ScreenDistortionPass
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   injectionPoint: 600
   fetchColorBuffer: 1
   requirements: 0
-  passMaterial: {fileID: 2100000, guid: 78a08787ca30045abb69f6f7dd878e09, type: 2}
+  passMaterial: {fileID: -876546973899608171, guid: 985419538d1a65260a0aec839344034c, type: 3}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
+--- !u!114 &2619027797056556009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: LensDistortionPass
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 0
+  passMaterial: {fileID: -876546973899608171, guid: fbb724b03f69edfd0b7328fc2f00435f, type: 3}
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
@@ -216,6 +301,26 @@ MonoBehaviour:
   fetchColorBuffer: 1
   requirements: 0
   passMaterial: {fileID: -876546973899608171, guid: c88649a28e5eb90b9b16527ef29b26cd, type: 3}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
+--- !u!114 &7382676540901282689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: LensDarkeningPass
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 0
+  passMaterial: {fileID: -876546973899608171, guid: fbb724b03f69edfd0b7328fc2f00435f, type: 3}
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
