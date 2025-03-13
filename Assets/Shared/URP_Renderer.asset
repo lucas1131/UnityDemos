@@ -110,13 +110,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
-  m_Name: UnderwaterPass
+  m_Name: OutlinePass
   m_EditorClassIdentifier: 
   m_Active: 1
   injectionPoint: 600
   fetchColorBuffer: 1
-  requirements: 1
-  passMaterial: {fileID: -876546973899608171, guid: 1d5ae68434e9a20aeb7e6a105baf2f12, type: 3}
+  requirements: 3
+  passMaterial: {fileID: -876546973899608171, guid: 454fd2e2a03799b1799836db2ac70273, type: 3}
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
@@ -198,7 +198,8 @@ MonoBehaviour:
   - {fileID: -9059813481213116597}
   - {fileID: 7382676540901282689}
   - {fileID: -2828020489350246891}
-  m_RendererFeatureMap: 343d34e94220190406894cfc0b0e7991bdcdce498fca8eacbf4b4e97eb73902e59f33a4207800db941a474d8403b7eff04627acb180a4af2c0dc5d03c3909f1ee90b6ebce7a758243143ea8fddd2a2914b3fffc8a313458281d307e832897466158ec03259dac0d8
+  - {fileID: 4405940761764941403}
+  m_RendererFeatureMap: 343d34e94220190406894cfc0b0e7991bdcdce498fca8eacbf4b4e97eb73902e59f33a4207800db941a474d8403b7eff04627acb180a4af2c0dc5d03c3909f1ee90b6ebce7a758243143ea8fddd2a2914b3fffc8a313458281d307e832897466158ec03259dac0d85bce6976c70b253d
   m_UseNativeRenderPass: 0
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -301,6 +302,26 @@ MonoBehaviour:
   fetchColorBuffer: 1
   requirements: 0
   passMaterial: {fileID: -876546973899608171, guid: c88649a28e5eb90b9b16527ef29b26cd, type: 3}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
+--- !u!114 &4405940761764941403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: ToonPass
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 0
+  passMaterial: {fileID: -876546973899608171, guid: 6366f53262f179bc9af46ccf046bd174, type: 3}
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
