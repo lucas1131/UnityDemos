@@ -40,7 +40,7 @@
             "m_Id": "3cb658c33e0c42e5835b0ac5c8f35102"
         },
         {
-            "m_Id": "071a8eb265aa4cd28386129827d4c3bd"
+            "m_Id": "b126955f1ab8446ea27a5c73d2f80eb5"
         }
     ],
     "m_GroupDatas": [],
@@ -81,20 +81,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "071a8eb265aa4cd28386129827d4c3bd"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "27f6bdc97d8f4a458d4f714749343b97"
-                },
-                "m_SlotId": 1
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "18cddf5308584b1cbe38d46f3f94db7c"
                 },
                 "m_SlotId": 0
@@ -115,7 +101,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "071a8eb265aa4cd28386129827d4c3bd"
+                    "m_Id": "b126955f1ab8446ea27a5c73d2f80eb5"
                 },
                 "m_SlotId": 0
             }
@@ -132,6 +118,20 @@
                     "m_Id": "db8eab9198154b0c8868a68d0840fe45"
                 },
                 "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "b126955f1ab8446ea27a5c73d2f80eb5"
+                },
+                "m_SlotId": 1
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "27f6bdc97d8f4a458d4f714749343b97"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -185,7 +185,7 @@
         "preventRotation": false
     },
     "m_Path": "AiroLibrary/Helpers",
-    "m_GraphPrecision": 1,
+    "m_GraphPrecision": 0,
     "m_PreviewMode": 1,
     "m_OutputNode": {
         "m_Id": "27f6bdc97d8f4a458d4f714749343b97"
@@ -228,50 +228,6 @@
     "m_Property": {
         "m_Id": "e6bb3ced82264196bb5f240a3a8ea896"
     }
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.CustomFunctionNode",
-    "m_ObjectId": "071a8eb265aa4cd28386129827d4c3bd",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "Hash21 (Custom Function)",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": -64.99996948242188,
-            "y": 9.999995231628418,
-            "width": 207.99998474121095,
-            "height": 278.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "77769c2a5856455aa50166c316b7554e"
-        },
-        {
-            "m_Id": "b5453d90630e4bd0aeee221fa5470583"
-        }
-    ],
-    "synonyms": [
-        "code",
-        "HLSL"
-    ],
-    "m_Precision": 0,
-    "m_PreviewExpanded": false,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_SourceType": 1,
-    "m_FunctionName": "Hash21",
-    "m_FunctionSource": "",
-    "m_FunctionSourceUsePragmas": true,
-    "m_FunctionBody": "uint2 v = (uint2) (int2) round(In);\nv.y ^= 1103515245U;\nv.x += v.y;\nv.x *= v.y;\nv.x ^= v.x >> 5u;\nv.x *= 0x27d4eb2du;\nOut = (v.x >> 8) * (1.0 / float(0x00ffffff));"
 }
 
 {
@@ -440,6 +396,21 @@
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Cosine Time",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "38f6d5bbf274411fb65bfa3dfa1db5b3",
+    "m_Id": 1,
+    "m_DisplayName": "Out",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
@@ -643,27 +614,6 @@
 }
 
 {
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
-    "m_ObjectId": "77769c2a5856455aa50166c316b7554e",
-    "m_Id": 0,
-    "m_DisplayName": "In",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "In",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0
-    },
-    "m_Labels": []
-}
-
-{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
     "m_ObjectId": "879834ae8ea84b47abbdd26da57e576a",
@@ -796,18 +746,47 @@
 }
 
 {
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "b5453d90630e4bd0aeee221fa5470583",
-    "m_Id": 1,
-    "m_DisplayName": "Out",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.CustomFunctionNode",
+    "m_ObjectId": "b126955f1ab8446ea27a5c73d2f80eb5",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Hash21 (Custom Function)",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -65.0,
+            "y": 10.0,
+            "width": 208.0,
+            "height": 278.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "d9e5fdc0c49940ef941149fa61d618d1"
+        },
+        {
+            "m_Id": "38f6d5bbf274411fb65bfa3dfa1db5b3"
+        }
+    ],
+    "synonyms": [
+        "code",
+        "HLSL"
+    ],
+    "m_Precision": 0,
+    "m_PreviewExpanded": false,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SourceType": 0,
+    "m_FunctionName": "Hash21",
+    "m_FunctionSource": "748d839385093a20880d0d385975fee2",
+    "m_FunctionSourceUsePragmas": true,
+    "m_FunctionBody": "uint2 v = (uint2) (int2) round(In);\nv.y ^= 1103515245U;\nv.x += v.y;\nv.x *= v.y;\nv.x ^= v.x >> 5u;\nv.x *= 0x27d4eb2du;\nOut = (v.x >> 8) * (1.0 / float(0x00ffffff));"
 }
 
 {
@@ -933,6 +912,27 @@
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "d9e5fdc0c49940ef941149fa61d618d1",
+    "m_Id": 0,
+    "m_DisplayName": "In",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "In",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
+    },
     "m_Labels": []
 }
 

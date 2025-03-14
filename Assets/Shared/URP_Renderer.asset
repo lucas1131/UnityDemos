@@ -60,6 +60,26 @@ MonoBehaviour:
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
+--- !u!114 &-6166954532294677325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: VHSFilterPass
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 0
+  passMaterial: {fileID: -876546973899608171, guid: 00776fc0253514cf5ad5e3e6023a7f1d, type: 3}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
 --- !u!114 &-6012645735725609539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +97,26 @@ MonoBehaviour:
   fetchColorBuffer: 1
   requirements: 0
   passMaterial: {fileID: -876546973899608171, guid: be6ebbc58af21a33992ae7998c34a233, type: 3}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
+--- !u!114 &-5113519392838106188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: InterlacePass
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 0
+  passMaterial: {fileID: -876546973899608171, guid: 0f3a643c16f8c64ecbc18beb3ae89307, type: 3}
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
@@ -100,6 +140,26 @@ MonoBehaviour:
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
+--- !u!114 &-5030456020041464757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: YIQColospacePass
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 0
+  passMaterial: {fileID: -876546973899608171, guid: d8c176f5f96e33af1b6f58123393d356, type: 3}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
 --- !u!114 &-2828020489350246891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
   m_Name: OutlinePass
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   injectionPoint: 600
   fetchColorBuffer: 1
   requirements: 3
@@ -199,7 +259,11 @@ MonoBehaviour:
   - {fileID: 7382676540901282689}
   - {fileID: -2828020489350246891}
   - {fileID: 4405940761764941403}
-  m_RendererFeatureMap: 343d34e94220190406894cfc0b0e7991bdcdce498fca8eacbf4b4e97eb73902e59f33a4207800db941a474d8403b7eff04627acb180a4af2c0dc5d03c3909f1ee90b6ebce7a758243143ea8fddd2a2914b3fffc8a313458281d307e832897466158ec03259dac0d85bce6976c70b253d
+  - {fileID: -5030456020041464757}
+  - {fileID: -5113519392838106188}
+  - {fileID: 4804814239024325516}
+  - {fileID: -6166954532294677325}
+  m_RendererFeatureMap: 343d34e94220190406894cfc0b0e7991bdcdce498fca8eacbf4b4e97eb73902e59f33a4207800db941a474d8403b7eff04627acb180a4af2c0dc5d03c3909f1ee90b6ebce7a758243143ea8fddd2a2914b3fffc8a313458281d307e832897466158ec03259dac0d85bce6976c70b253d4b0434fbe63a30bab443d06d342109b98ca3c8e81721ae42b32c97dc86936aaa
   m_UseNativeRenderPass: 0
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -317,11 +381,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
   m_Name: ToonPass
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   injectionPoint: 600
   fetchColorBuffer: 1
   requirements: 0
   passMaterial: {fileID: -876546973899608171, guid: 6366f53262f179bc9af46ccf046bd174, type: 3}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
+--- !u!114 &4804814239024325516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 0
+  passMaterial: {fileID: -876546973899608171, guid: c2abf96be16db2763b7f8a91fb1265aa, type: 3}
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
