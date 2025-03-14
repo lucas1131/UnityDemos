@@ -252,6 +252,9 @@
             "m_Id": "9998289ed2c948d8be5031ee11a48f9c"
         },
         {
+            "m_Id": "a1802d3dc4184b5db6c702cab362a397"
+        },
+        {
             "m_Id": "b7d715feb63a4a9bb5ba48df472ae7d5"
         }
     ],
@@ -270,7 +273,8 @@
         "229f797a-c663-4984-ae4b-89122b1756aa",
         "24c3a593-6141-4c3b-bc9f-495e123f3517",
         "92d1b390-d8e7-41fe-8f1e-c50e550e48fe",
-        "7c26469f-a0d7-4da0-88a5-404687c76fbe"
+        "7c26469f-a0d7-4da0-88a5-404687c76fbe",
+        "7f365383-ab00-477e-a348-7de92e736810"
     ],
     "m_PropertyIds": [
         -1870310844,
@@ -278,7 +282,8 @@
         -742071396,
         562324604,
         597851053,
-        -911637433
+        -911637433,
+        -1050819826
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
@@ -756,6 +761,21 @@
     "m_SupportsLODCrossFade": false,
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "a1802d3dc4184b5db6c702cab362a397",
+    "m_Id": -1050819826,
+    "m_DisplayName": "ChromaRotation",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_ChromaRotation",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {

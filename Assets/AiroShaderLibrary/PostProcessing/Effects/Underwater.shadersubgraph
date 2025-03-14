@@ -436,9 +436,9 @@
         },
         "preventRotation": false
     },
-    "m_Path": "Sub Graphs",
+    "m_Path": "AiroLibrary/PostProcess/Effects",
     "m_GraphPrecision": 1,
-    "m_PreviewMode": 2,
+    "m_PreviewMode": 1,
     "m_OutputNode": {
         "m_Id": "60e3e01ec84b40d6a7cf34cb7fe722f3"
     },
@@ -593,6 +593,9 @@
             "m_Id": "c5e3f33bd26945fbaca9ec0d35dbca0f"
         },
         {
+            "m_Id": "e88efdeb8ee945e89c131d30f026f310"
+        },
+        {
             "m_Id": "a8e65ad75d944f74adab49cfd676f8e8"
         }
     ],
@@ -608,12 +611,14 @@
     "m_PropertyGuids": [
         "abce6662-4009-4fbd-8e9a-12d115d985e6",
         "2b54c548-6d9e-4ec9-b748-d2fd7619dc61",
-        "aa5bb745-990a-4260-ba85-194af7a75c60"
+        "aa5bb745-990a-4260-ba85-194af7a75c60",
+        "b6999af1-0e35-4b39-8484-9aae198ada6a"
     ],
     "m_PropertyIds": [
         -740006416,
         -107742953,
-        -1031926782
+        -1031926782,
+        971020889
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
@@ -2428,6 +2433,19 @@
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.SamplerStateMaterialSlot",
+    "m_ObjectId": "e88efdeb8ee945e89c131d30f026f310",
+    "m_Id": 971020889,
+    "m_DisplayName": "Sampler",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Sampler",
+    "m_StageCapability": 2,
+    "m_BareResource": false
 }
 
 {

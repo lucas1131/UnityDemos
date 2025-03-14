@@ -6271,8 +6271,8 @@
     "m_ObjectId": "a8a8579ea87e4285a6097cfd82cfa9ad",
     "m_Title": "Difference of Depth",
     "m_Position": {
-        "x": -1169.9998779296875,
-        "y": 854.0
+        "x": -1170.0,
+        "y": 853.9998779296875
     }
 }
 
@@ -7861,8 +7861,8 @@
     "m_ObjectId": "d6035e65ebcb4179858023a2f39bce26",
     "m_Title": "Difference of normals",
     "m_Position": {
-        "x": -1169.9998779296875,
-        "y": 102.0
+        "x": -1170.0,
+        "y": 102.00005340576172
     }
 }
 
